@@ -1,4 +1,7 @@
-FROM ubuntu
-RUN  apt-get update &&  apt-get install nano
-#ااااااhhhhh
-#hhhhh
+FROM node:18-alpine
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD [ "node", "api.js" ]
